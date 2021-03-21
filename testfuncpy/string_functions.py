@@ -9,10 +9,10 @@ class CharInclusionFn(BaseFunction):
         self.target_set = target_set
         super(CharInclusionFn, self).__init__(inverted=inverted)
 
-    def __evaluate__(self, individual):
+    def __evaluate__(self, string):
         result = 0
-        for index in range(individual.size):
-            if individual[index] in self.target_set:
+        for index in range(string.size):
+            if string[index] in self.target_set:
                 result += 1
 
-        return result/individual.size
+        return result/string.size
