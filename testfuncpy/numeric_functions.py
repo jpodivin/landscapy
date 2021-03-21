@@ -2,14 +2,16 @@ from testfuncpy.base_function import BaseFunction
 import numpy as np
 
 class SphereFn(BaseFunction):
-
+    """
+    """
     def __evaluate__(self, values):
         result = np.sum(np.power(values, 2))
 
         return result
 
 class StyblinskiTangFn(BaseFunction):
-
+    """
+    """
     def __evaluate__(self, values):
         result = np.power(values, 4) - 16 * np.power(values,2) + 5 * values
         result = np.sum(result)
@@ -17,7 +19,8 @@ class StyblinskiTangFn(BaseFunction):
         return result
 
 class HappyCatFn(BaseFunction):
-
+    """
+    """
     def __init__(self, inverted=False, alpha = 1/8):
         self.alpha = alpha
         super(HappyCatFn, self).__init__(inverted=inverted)
@@ -32,8 +35,7 @@ class HappyCatFn(BaseFunction):
         return result
 
 class ShwefelFn(BaseFunction):
-    """
-    Schwefel 2.20 Function
+    """Schwefel 2.20 Function
     """
     def __evaluate__(self, values):
         result = np.abs(values)
@@ -42,7 +44,8 @@ class ShwefelFn(BaseFunction):
         return result
 
 class QuarticFn(BaseFunction):
-
+    """
+    """
     def __init__(self, inverted=False):
         self._rnd = np.random.default_rng()
         super(QuarticFn, self).__init__(inverted=inverted)
@@ -56,7 +59,8 @@ class QuarticFn(BaseFunction):
         return result
 
 class HolderTableFn(BaseFunction):
-
+    """
+    """
     def __evaluate__(self, values):
 
         values = values.flatten()
