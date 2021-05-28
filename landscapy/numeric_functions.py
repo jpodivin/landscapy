@@ -13,8 +13,8 @@ class SphereFn(bf.BaseFunction):
 
         return result
 
-    def _minima(self, x):
-        if all([i == 0 for i in x]):
+    def _optima(self, values):
+        if all([i == 0 for i in values]):
             return 0
         else:
             raise ValueError
@@ -32,8 +32,8 @@ class StyblinskiTangFn(bf.BaseFunction):
 
         return result
 
-    def _minima(self, x):
-        if all([i==2.903534 for i in x]):
+    def _optima(self, values):
+        if all([i==2.903534 for i in values]):
             return -39.16599
         else:
             raise ValueError
@@ -58,9 +58,9 @@ class HappyCatFn(bf.BaseFunction):
 
         return result
 
-    def _minima(self, x):
-        if all([i == -1 for i in x]):
-            0
+    def _optima(self, values):
+        if all([i == -1 for i in values]):
+            0.0
         else:
             raise ValueError
 
@@ -93,7 +93,7 @@ class HolderTableFn(bf.SquashedDimsFunction):
 
         return result
 
-    def _minima(self, x):
+    def _optima(self, values):
         min_dict = {
             (8.05502, 9.66459): -19.2085,
             (8.05502, -9.66459): -19.2085,
@@ -101,4 +101,4 @@ class HolderTableFn(bf.SquashedDimsFunction):
             (-8.05502, 9.66459): -19.2085,
         }
 
-        return min_dict.get(tuple(x))
+        return min_dict.get(tuple(values))

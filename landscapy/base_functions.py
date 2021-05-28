@@ -28,15 +28,39 @@ class BaseFunction:
         """
         return 0.0
 
+    def _optima(self, values):
+        """Checks that provided values are in the list
+        of known optimal points (minima or maxima). 
+        """
+        return 0.0
+
     @property
     def evaluated(self):
         """Return how many times was the function evaluated.
         """
         return self._evaluated
 
+    @property
+    def optimum_reached(self, values):
+        """Check if provided values represent one of the
+        set optimal values and compare expected and real evaluation.
+
+        :param values: function input
+        :type values: numpy array
+
+        :rtype: bool
+        """
+        try:
+            if self._optima(values) == self.__evaluate__(values):
+                return True
+        except ValueError:
+            return False
+        return False
+
 
 class SquashedDimsFunction(BaseFunction):
-
+    """
+    """
     def __init__(self, inverted, final_dimension, strategy='splitsum'):
         self._final_dimension = final_dimension
         self._squash_strategy = strategy
