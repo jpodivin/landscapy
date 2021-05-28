@@ -1,6 +1,6 @@
 import string
 import numpy as np
-from testfuncpy.base_function import BaseFunction
+from landscapy.base_function import BaseFunction
 
 class CharInclusionFn(BaseFunction):
     """

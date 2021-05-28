@@ -1,4 +1,4 @@
-from testfuncpy.base_function import BaseFunction
+from landscapy.base_function import BaseFunction
 import numpy as np
 
 class SphereFn(BaseFunction):
