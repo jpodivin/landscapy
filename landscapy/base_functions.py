@@ -1,11 +1,12 @@
 import numpy as np
 
+
 class BaseFunction:
     """Base class of test functions.
     """
     def __init__(self, inverted=False):
         self._evaluated = 0
-        self.inverted=inverted
+        self.inverted = inverted
 
     def __call__(self, values):
         """Evaluate function and increment evaluation counter.
@@ -26,17 +27,18 @@ class BaseFunction:
         :rtype: float
         """
         return 0.0
-    
+
     @property
     def evaluated(self):
         """Return how many times was the function evaluated.
         """
         return self._evaluated
 
+
 class SquashedDimsFunction(BaseFunction):
-    
+
     def __init__(self, inverted, final_dimension, strategy='splitsum'):
-        self._final_dimension=final_dimension
+        self._final_dimension = final_dimension
         self._squash_strategy = strategy
         super().__init__(inverted=inverted)
 

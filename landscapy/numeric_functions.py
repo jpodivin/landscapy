@@ -1,6 +1,7 @@
 from landscapy import base_functions as bf
 import numpy as np
 
+
 class SphereFn(bf.BaseFunction):
     """
     """
@@ -9,19 +10,21 @@ class SphereFn(bf.BaseFunction):
 
         return result
 
+
 class StyblinskiTangFn(bf.BaseFunction):
     """
     """
     def __evaluate__(self, values):
-        result = np.power(values, 4) - 16 * np.power(values,2) + 5 * values
+        result = np.power(values, 4) - 16 * np.power(values, 2) + 5 * values
         result = np.sum(result)
 
         return result
 
+
 class HappyCatFn(bf.BaseFunction):
     """
     """
-    def __init__(self, inverted=False, alpha = 1/8):
+    def __init__(self, inverted=False, alpha=1/8):
         self.alpha = alpha
         super(HappyCatFn, self).__init__(inverted=inverted)
 
@@ -29,10 +32,11 @@ class HappyCatFn(bf.BaseFunction):
         norm = np.linalg.norm(values)
         result = np.power(norm, 2) - values.size
         result = np.power(np.power(result, 2), self.alpha)
-        result = result + (1/values.size) * ( 0.5 * np.power(norm, 2) + np.sum(values))
-        result = result + 0.5
+        result += (1/values.size) * (0.5 * np.power(norm, 2) + np.sum(values))
+        result += 0.5
 
         return result
+
 
 class ShwefelFn(bf.BaseFunction):
     """Schwefel 2.20 Function
@@ -42,6 +46,7 @@ class ShwefelFn(bf.BaseFunction):
         result = np.sum(result)
 
         return result
+
 
 class QuarticFn(bf.SquashedDimsFunction):
     """Quartic function. Two variable
@@ -54,6 +59,7 @@ class QuarticFn(bf.SquashedDimsFunction):
         result += values[0]/10 + np.pow(values[1], 2)/2
 
         return result
+
 
 class HolderTableFn(bf.SquashedDimsFunction):
     """

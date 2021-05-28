@@ -1,5 +1,4 @@
 import unittest
-from unittest.runner import TextTestResult
 import numpy as np
 from landscapy import base_functions
 
