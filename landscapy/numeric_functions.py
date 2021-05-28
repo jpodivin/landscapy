@@ -43,18 +43,15 @@ class ShwefelFn(bf.BaseFunction):
 
         return result
 
-class QuarticFn(bf.BaseFunction):
-    """
+class QuarticFn(bf.SquashedDimsFunction):
+    """Quartic function. Two variable
     """
     def __init__(self, inverted=False):
-        self._rnd = np.random.default_rng()
-        super(QuarticFn, self).__init__(inverted=inverted)
+        super(QuarticFn, self).__init__(inverted, 2)
 
     def __evaluate__(self, values):
-        result = np.power(values, 4)
-        result = result.flat * np.arange(0, result.size, step=1)
-        result = result + self._rnd.random((result.size,))
-        result = np.sum(result)
+        result = np.pow(values[0], 4)/4 + np.pow(values[0], 2)/2
+        result += values[0]/10 + np.pow(values[1], 2)/2
 
         return result
 
