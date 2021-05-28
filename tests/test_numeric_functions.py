@@ -1,6 +1,6 @@
 import unittest
 import numpy as np
-from testfuncpy import numeric_functions
+from landscapy import numeric_functions
 
 
 class TestNumericFunction(unittest.TestCase):

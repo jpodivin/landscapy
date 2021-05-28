@@ -1,6 +1,6 @@
 import unittest
 import numpy as np
-from testfuncpy import base_function
+from landscapy import base_function
 
 
 class TestBaseFunction(unittest.TestCase):

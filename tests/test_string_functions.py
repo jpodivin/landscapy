@@ -1,5 +1,5 @@
 import unittest
-from testfuncpy import string_functions
+from landscapy import string_functions
 
 
 class TestStringFunction(unittest.TestCase):
