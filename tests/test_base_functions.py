@@ -1,4 +1,5 @@
 import unittest
+from unittest.runner import TextTestResult
 import numpy as np
 from landscapy import base_functions
 
@@ -33,3 +34,13 @@ class TestBaseFunction(unittest.TestCase):
         test_function = base_functions.BaseFunction(True)
 
         self.assertEqual(test_function(self.test_values), 1.0)
+
+    def test_function_init_evaluated(self):
+        test_function = base_functions.BaseFunction()
+
+        self.assertEqual(test_function.evaluated, 0)
+
+        for _ in range(100):
+            test_function(self.test_values)
+
+        self.assertEqual(test_function.evaluated, 100)
