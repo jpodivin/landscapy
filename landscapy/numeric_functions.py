@@ -22,7 +22,7 @@ class SphereFn(bf.BaseFunction):
 class StyblinskiTangFn(bf.BaseFunction):
     """Styblinski–Tang function. N-dimensional
     """
-    def __init__(self, inverted):       
+    def __init__(self, inverted):
 
         super().__init__(inverted=inverted)
 
@@ -39,7 +39,7 @@ class StyblinskiTangFn(bf.BaseFunction):
             raise ValueError
 
 class HappyCatFn(bf.BaseFunction):
-    """Happy cat function. 
+    """Happy cat function.
     Hans-Georg Beyer, Steffen Finck:
     HappyCat – A Simple Function Class Where Well-Known Direct Search Algorithms Do Fail
     (2012)
@@ -62,7 +62,7 @@ class HappyCatFn(bf.BaseFunction):
         if all([i == -1 for i in x]):
             0
         else:
-            raise ValueError    
+            raise ValueError
 
 class ShwefelFn(bf.BaseFunction):
     """Schwefel 2.20 Function
@@ -92,7 +92,7 @@ class HolderTableFn(bf.SquashedDimsFunction):
         result = -np.abs(result)
 
         return result
-        
+
     def _minima(self, x):
         min_dict = {
             (8.05502, 9.66459): -19.2085,
