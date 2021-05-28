@@ -30,7 +30,7 @@ class BaseFunction:
 
     def _optima(self, values):
         """Checks that provided values are in the list
-        of known optimal points (minima or maxima). 
+        of known optimal points (minima or maxima)._optima
         """
         return 0.0
 

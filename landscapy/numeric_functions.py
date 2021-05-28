@@ -19,6 +19,7 @@ class SphereFn(bf.BaseFunction):
         else:
             raise ValueError
 
+
 class StyblinskiTangFn(bf.BaseFunction):
     """Styblinski–Tang function. N-dimensional
     """
@@ -33,15 +34,17 @@ class StyblinskiTangFn(bf.BaseFunction):
         return result
 
     def _optima(self, values):
-        if all([i==2.903534 for i in values]):
+        if all([i == 2.903534 for i in values]):
             return -39.16599
         else:
             raise ValueError
 
+
 class HappyCatFn(bf.BaseFunction):
     """Happy cat function.
     Hans-Georg Beyer, Steffen Finck:
-    HappyCat – A Simple Function Class Where Well-Known Direct Search Algorithms Do Fail
+    HappyCat – A Simple Function Class
+    Where Well-Known Direct Search Algorithms Do Fail
     (2012)
     """
     def __init__(self, inverted=False, alpha=1/8):
@@ -63,6 +66,7 @@ class HappyCatFn(bf.BaseFunction):
             0.0
         else:
             raise ValueError
+
 
 class ShwefelFn(bf.BaseFunction):
     """Schwefel 2.20 Function
