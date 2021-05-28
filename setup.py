@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="landscapy",
-    version="0.0.1",
+    version="0.0.2",
     author="Jiří Podivín",
     author_email="jpodivin@gmail.com",
     description="Library of various test functions for benchmarking optimization algorithms.",
