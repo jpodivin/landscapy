@@ -3,29 +3,50 @@ import numpy as np
 
 
 class SphereFn(bf.BaseFunction):
+    """Sum of squares. N-dimensional
     """
-    """
+    def __init__(self, inverted):
+        super().__init__(inverted=inverted)
+
     def __evaluate__(self, values):
         result = np.sum(np.power(values, 2))
 
         return result
 
+    def _minima(self, x):
+        if all([i == 0 for i in x]):
+            return 0
+        else:
+            raise ValueError
 
 class StyblinskiTangFn(bf.BaseFunction):
+    """Styblinski–Tang function. N-dimensional
     """
-    """
+    def __init__(self, inverted):       
+
+        super().__init__(inverted=inverted)
+
     def __evaluate__(self, values):
         result = np.power(values, 4) - 16 * np.power(values, 2) + 5 * values
         result = np.sum(result)
 
         return result
 
+    def _minima(self, x):
+        if all([i==2.903534 for i in x]):
+            return -39.16599
+        else:
+            raise ValueError
 
 class HappyCatFn(bf.BaseFunction):
-    """
+    """Happy cat function. 
+    Hans-Georg Beyer, Steffen Finck:
+    HappyCat – A Simple Function Class Where Well-Known Direct Search Algorithms Do Fail
+    (2012)
     """
     def __init__(self, inverted=False, alpha=1/8):
         self.alpha = alpha
+
         super(HappyCatFn, self).__init__(inverted=inverted)
 
     def __evaluate__(self, values):
@@ -37,6 +58,11 @@ class HappyCatFn(bf.BaseFunction):
 
         return result
 
+    def _minima(self, x):
+        if all([i == -1 for i in x]):
+            0
+        else:
+            raise ValueError    
 
 class ShwefelFn(bf.BaseFunction):
     """Schwefel 2.20 Function
@@ -48,21 +74,8 @@ class ShwefelFn(bf.BaseFunction):
         return result
 
 
-class QuarticFn(bf.SquashedDimsFunction):
-    """Quartic function. Two variable
-    """
-    def __init__(self, inverted=False):
-        super(QuarticFn, self).__init__(inverted, 2)
-
-    def __evaluate__(self, values):
-        result = np.pow(values[0], 4)/4 + np.pow(values[0], 2)/2
-        result += values[0]/10 + np.pow(values[1], 2)/2
-
-        return result
-
-
 class HolderTableFn(bf.SquashedDimsFunction):
-    """
+    """Holder Table function. 2-dimensional
     """
     def __init__(self, inverted=False):
 
@@ -79,3 +92,13 @@ class HolderTableFn(bf.SquashedDimsFunction):
         result = -np.abs(result)
 
         return result
+        
+    def _minima(self, x):
+        min_dict = {
+            (8.05502, 9.66459): -19.2085,
+            (8.05502, -9.66459): -19.2085,
+            (-8.05502, -9.66459): -19.2085,
+            (-8.05502, 9.66459): -19.2085,
+        }
+
+        return min_dict.get(tuple(x))
