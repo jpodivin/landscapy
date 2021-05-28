@@ -74,6 +74,5 @@ class HolderTableFn(bf.SquashedDimsFunction):
         result = np.abs(1 - (result / np.pi))
         result = np.sin(x) * np.cos(y) * np.exp(result)
         result = -np.abs(result)
-        result = max(result, -19.2085) - min(result, -19.2085)
 
         return result
