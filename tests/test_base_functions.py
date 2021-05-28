@@ -1,6 +1,6 @@
 import unittest
 import numpy as np
-from landscapy import base_function
+from landscapy import base_functions
 
 
 class TestBaseFunction(unittest.TestCase):
@@ -12,24 +12,24 @@ class TestBaseFunction(unittest.TestCase):
 
     def test_function_init(self):
 
-        test_function = base_function.BaseFunction()
+        test_function = base_functions.BaseFunction()
 
         self.assertFalse(test_function.inverted)
 
     def test_function_init_inverted(self):
 
-        test_function = base_function.BaseFunction(inverted=True)
+        test_function = base_functions.BaseFunction(inverted=True)
 
         self.assertTrue(test_function.inverted)
 
     def test_evaluate(self):
 
-        test_function = base_function.BaseFunction()
+        test_function = base_functions.BaseFunction()
 
         self.assertEqual(test_function(self.test_values), 0.0)
 
     def test_evaluate_inverted(self):
 
-        test_function = base_function.BaseFunction(True)
+        test_function = base_functions.BaseFunction(True)
 
         self.assertEqual(test_function(self.test_values), 1.0)

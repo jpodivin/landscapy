@@ -1,7 +1,7 @@
-from landscapy.base_function import BaseFunction
+from landscapy import base_functions as bf
 import numpy as np
 
-class SphereFn(BaseFunction):
+class SphereFn(bf.BaseFunction):
     """
     """
     def __evaluate__(self, values):
@@ -9,7 +9,7 @@ class SphereFn(BaseFunction):
 
         return result
 
-class StyblinskiTangFn(BaseFunction):
+class StyblinskiTangFn(bf.BaseFunction):
     """
     """
     def __evaluate__(self, values):
@@ -18,7 +18,7 @@ class StyblinskiTangFn(BaseFunction):
 
         return result
 
-class HappyCatFn(BaseFunction):
+class HappyCatFn(bf.BaseFunction):
     """
     """
     def __init__(self, inverted=False, alpha = 1/8):
@@ -34,7 +34,7 @@ class HappyCatFn(BaseFunction):
 
         return result
 
-class ShwefelFn(BaseFunction):
+class ShwefelFn(bf.BaseFunction):
     """Schwefel 2.20 Function
     """
     def __evaluate__(self, values):
@@ -43,7 +43,7 @@ class ShwefelFn(BaseFunction):
 
         return result
 
-class QuarticFn(BaseFunction):
+class QuarticFn(bf.BaseFunction):
     """
     """
     def __init__(self, inverted=False):
@@ -58,15 +58,17 @@ class QuarticFn(BaseFunction):
 
         return result
 
-class HolderTableFn(BaseFunction):
+class HolderTableFn(bf.SquashedDimsFunction):
     """
     """
+    def __init__(self, inverted=False):
+
+        super().__init__(inverted, 2)
+
     def __evaluate__(self, values):
 
-        values = values.flatten()
-
-        x = np.sum(values[:values.size//2])
-        y = np.sum(values[values.size//2:])
+        x = values[0]
+        y = values[1]
 
         result = np.sqrt(np.power(x, 2) + np.power(y, 2))
         result = np.abs(1 - (result / np.pi))
