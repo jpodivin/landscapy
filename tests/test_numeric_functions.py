@@ -7,7 +7,7 @@ class TestNumericFunction(unittest.TestCase):
 
     def setUp(self):
 
-        self.test_values = np.ones((100,))
+        self.test_values = np.ones((10,))
         super(TestNumericFunction, self).setUp()
 
     def test_holder_table_fn(self):
@@ -15,3 +15,6 @@ class TestNumericFunction(unittest.TestCase):
         function = nf.HolderTableFn()
 
         result = function(self.test_values)
+
+        self.assertEqual(function.evaluated, 1)
+        self.assertAlmostEqual(result, -0.95016120789)
