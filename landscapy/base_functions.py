@@ -31,8 +31,12 @@ class BaseFunction:
     def _optima(self, values):
         """Checks that provided values are among the known optimal points
         (minima or maxima depending on the function and task).
+        Implementation of this method depends on properties
+        of the tested function.
+
+        :rtype: bool
         """
-        return 0.0
+        return False
 
     @property
     def evaluated(self):
@@ -49,10 +53,7 @@ class BaseFunction:
 
         :rtype: bool
         """
-        try:
-            return self._optima(values)
-        except ValueError:
-            return False
+        return self._optima(values)
 
 
 class SquashedDimsFunction(BaseFunction):
