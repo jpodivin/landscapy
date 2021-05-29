@@ -16,3 +16,7 @@ class CharInclusionFn(BaseFunction):
                 result += 1
 
         return result/string.size
+
+    def _optima(self, values):
+
+        return 1.0 == self.__evaluate__(values)

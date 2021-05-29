@@ -14,10 +14,8 @@ class SphereFn(bf.BaseFunction):
         return result
 
     def _optima(self, values):
-        if all([i == 0 for i in values]):
-            return 0
-        else:
-            raise ValueError
+        expected = np.zeros(values.shape)
+        return np.array_equal(values, expected)
 
 
 class StyblinskiTangFn(bf.BaseFunction):
@@ -34,11 +32,8 @@ class StyblinskiTangFn(bf.BaseFunction):
         return result
 
     def _optima(self, values):
-        if all([i == 2.903534 for i in values]):
-            return -39.16599
-        else:
-            raise ValueError
-
+        expected = np.full(values.shape, 2.903534)
+        return np.array_equal(values, expected)
 
 class HappyCatFn(bf.BaseFunction):
     """Happy cat function.
@@ -62,10 +57,8 @@ class HappyCatFn(bf.BaseFunction):
         return result
 
     def _optima(self, values):
-        if all([i == -1 for i in values]):
-            0.0
-        else:
-            raise ValueError
+        expected = np.full(values.shape, -1)
+        return np.array_equal(values, expected)
 
 
 class ShwefelFn(bf.BaseFunction):
@@ -76,6 +69,10 @@ class ShwefelFn(bf.BaseFunction):
         result = np.sum(result)
 
         return result
+
+    def _optima(self, values):
+        expected = np.zeros(values.shape)
+        return np.array_equal(values, expected)
 
 
 class HolderTableFn(bf.SquashedDimsFunction):
@@ -98,11 +95,10 @@ class HolderTableFn(bf.SquashedDimsFunction):
         return result
 
     def _optima(self, values):
-        min_dict = {
-            (8.05502, 9.66459): -19.2085,
-            (8.05502, -9.66459): -19.2085,
-            (-8.05502, -9.66459): -19.2085,
-            (-8.05502, 9.66459): -19.2085,
-        }
+        min_points = [
+            (8.05502, 9.66459),
+            (8.05502, -9.66459),
+            (-8.05502, -9.66459),
+            (-8.05502, 9.66459)]
 
-        return min_dict.get(tuple(values))
+        return tuple(values) in min_points

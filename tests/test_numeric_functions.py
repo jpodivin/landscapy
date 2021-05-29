@@ -18,3 +18,4 @@ class TestNumericFunction(unittest.TestCase):
 
         self.assertEqual(function.evaluated, 1)
         self.assertAlmostEqual(result, -0.95016120789)
+        self.assertFalse(function.optimum_reached(self.test_values))

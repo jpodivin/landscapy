@@ -29,8 +29,8 @@ class BaseFunction:
         return 0.0
 
     def _optima(self, values):
-        """Checks that provided values are in the list
-        of known optimal points (minima or maxima)._optima
+        """Checks that provided values are among the known optimal points
+        (minima or maxima depending on the function and task).
         """
         return 0.0
 
@@ -40,10 +40,9 @@ class BaseFunction:
         """
         return self._evaluated
 
-    @property
     def optimum_reached(self, values):
         """Check if provided values represent one of the
-        set optimal values and compare expected and real evaluation.
+        known optimal values.
 
         :param values: function input
         :type values: numpy array
@@ -51,11 +50,9 @@ class BaseFunction:
         :rtype: bool
         """
         try:
-            if self._optima(values) == self.__evaluate__(values):
-                return True
+            return self._optima(values)
         except ValueError:
             return False
-        return False
 
 
 class SquashedDimsFunction(BaseFunction):
